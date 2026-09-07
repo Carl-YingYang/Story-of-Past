@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import type { Direction } from '../../data/assets';
+import { WorldPresentation } from '../../config/worldPresentation';
 
 export interface MovementVector { x: number; y: number; }
 
@@ -11,8 +12,9 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     super(scene, x, y, 'jose-idle-south-0');
     scene.add.existing(this);
     scene.physics.add.existing(this);
-    this.setScale(1.2).setDepth(20).setCollideWorldBounds(true);
-    this.body.setSize(25, 19).setOffset(21, 43);
+    const presentation = WorldPresentation.character;
+    this.setScale(presentation.scale).setDepth(20).setCollideWorldBounds(true);
+    this.body.setSize(presentation.body.width, presentation.body.height).setOffset(presentation.body.offsetX, presentation.body.offsetY);
     this.play('jose-idle-south');
   }
 
