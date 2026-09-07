@@ -1,0 +1,49 @@
+{
+  "group_id": "bf21aaab-f05f-4771-858a-b22bdf2f4a22",
+  "states": [
+    {
+      "character": {
+        "id": "65889f2f-c14b-4c6b-99b2-f320db326fb3",
+        "name": "Idle",
+        "prompt": "Pixel art top-down RPG character sprite, Pok\u00e9mon Gen3 scale (chibi, 3-4 heads tall).\n\nCharacter: young Filipino woman, market vendor, 1887 colonial Philippines.\n\nFace/Hair: warm tan skin, dark brown hair pulled back neatly under a headscarf, soft\nround face, gentle neutral expression, small dark eyes.\n\nHeadwear: cream/off-white headscarf/bandana wrapped fully around the head and tied at\nthe side, with small fabric ends visible.\n\nTop: cream/off-white blouse (camisa) with short puffed sleeves, plain and simple, no\nheavy trim.\n\nBottom: deep maroon/burgundy wrap skirt (patadyong-style) with subtle woven texture,\nfalling to mid-shin length.\n\nFootwear: simple tan leather sandals.\n\nProp: carrying a round woven basket (bilao) filled with fruits (bananas, oranges, small\npurple eggplants) held with both arms at waist/hip height.\n\nPalette: cream, maroon/burgundy, tan skin, dark brown hair, warm neutral tones. Flat\ntop-down lighting, soft single-direction shadow, transparent background.\n\nAnimations: Idle (breathing loop) + Walk (loop), 8 directions each (S, SE, E, NE, N, NW,\nW, SW). No other animation states.\n\nClean pixel edges, no anti-aliasing blur, small readable silhouette.",
+        "size": {
+          "width": 256,
+          "height": 256
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-08-01T07:36:37.796395+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {
+          "Idle": {
+            "south": [
+              "Idle/animations/Idle/south/frame_000.png",
+              "Idle/animations/Idle/south/frame_001.png",
+              "Idle/animations/Idle/south/frame_002.png",
+              "Idle/animations/Idle/south/frame_003.png",
+              "Idle/animations/Idle/south/frame_004.png",
+              "Idle/animations/Idle/south/frame_005.png",
+              "Idle/animations/Idle/south/frame_006.png",
+              "Idle/animations/Idle/south/frame_007.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-08-01T07:52:25.207967"
+}
