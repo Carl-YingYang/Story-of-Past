@@ -6,6 +6,8 @@ import { WorldPresentation } from '../config/worldPresentation';
 export class GroundFloorScene extends BaseWorldScene {
   private exit = new Phaser.Math.Vector2(480, 500);
   private stairs = new Phaser.Math.Vector2(815, 360);
+  private readonly useStairs = () => this.transition(SceneKeys.UpperFloor);
+  private readonly exitHouse = () => this.transition(SceneKeys.Exterior, { fromHouse: true });
 
   constructor() { super(SceneKeys.GroundFloor); }
 
@@ -34,8 +36,8 @@ export class GroundFloorScene extends BaseWorldScene {
   override update(): void {
     const nearStairs = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.stairs.x, this.stairs.y) < 68;
     const nearExit = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.exit.x, this.exit.y) < 65;
-    if (nearStairs) this.setContext('USE STAIRS', () => this.transition(SceneKeys.UpperFloor));
-    else this.setContext(nearExit ? 'EXIT' : '', nearExit ? () => this.transition(SceneKeys.Exterior, { fromHouse: true }) : undefined);
-    super.update(); this.player.setDepth(this.player.y + WorldPresentation.depth.actorOffset);
+    if (nearStairs) this.setContext('USE STAIRS', this.useStairs);
+    else this.setContext(nearExit ? 'EXIT' : '', nearExit ? this.exitHouse : undefined);
+    super.update();
   }
 }

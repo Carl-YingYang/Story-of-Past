@@ -5,6 +5,7 @@ import { BaseWorldScene } from './BaseWorldScene';
 
 export class UpperFloorScene extends BaseWorldScene {
   private readonly stairs = new Phaser.Math.Vector2(790, 265);
+  private readonly useStairs = () => this.transition(SceneKeys.GroundFloor, { fromUpper: true });
 
   constructor() { super(SceneKeys.UpperFloor); }
 
@@ -32,8 +33,7 @@ export class UpperFloorScene extends BaseWorldScene {
 
   override update(): void {
     const nearStairs = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.stairs.x, this.stairs.y) < 64;
-    this.setContext(nearStairs ? 'GO DOWN' : '', nearStairs ? () => this.transition(SceneKeys.GroundFloor, { fromUpper: true }) : undefined);
+    this.setContext(nearStairs ? 'GO DOWN' : '', nearStairs ? this.useStairs : undefined);
     super.update();
-    this.player.setDepth(this.player.y + WorldPresentation.depth.actorOffset);
   }
 }

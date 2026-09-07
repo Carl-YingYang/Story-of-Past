@@ -5,6 +5,7 @@ export class InputController {
   private readonly cursors: Phaser.Types.Input.Keyboard.CursorKeys;
   private readonly wasd: Record<'W' | 'A' | 'S' | 'D' | 'E' | 'SPACE', Phaser.Input.Keyboard.Key>;
   private touchVector: MovementVector = { x: 0, y: 0 };
+  private readonly movementVector: MovementVector = { x: 0, y: 0 };
   private actionQueued = false;
 
   constructor(scene: Phaser.Scene) {
@@ -25,7 +26,9 @@ export class InputController {
   movement(): MovementVector {
     const keyboardX = Number(this.cursors.right.isDown || this.wasd.D.isDown) - Number(this.cursors.left.isDown || this.wasd.A.isDown);
     const keyboardY = Number(this.cursors.down.isDown || this.wasd.S.isDown) - Number(this.cursors.up.isDown || this.wasd.W.isDown);
-    return keyboardX || keyboardY ? { x: keyboardX, y: keyboardY } : this.touchVector;
+    this.movementVector.x = keyboardX || keyboardY ? keyboardX : this.touchVector.x;
+    this.movementVector.y = keyboardX || keyboardY ? keyboardY : this.touchVector.y;
+    return this.movementVector;
   }
 
   consumeAction(): boolean {

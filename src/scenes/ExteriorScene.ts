@@ -7,6 +7,7 @@ export class ExteriorScene extends BaseWorldScene {
   private readonly worldWidth = 1440;
   private readonly worldHeight = 900;
   private readonly door = new Phaser.Math.Vector2(720, 390);
+  private readonly enterHouse = () => this.transition(SceneKeys.GroundFloor);
 
   constructor() { super(SceneKeys.Exterior); }
 
@@ -24,7 +25,6 @@ export class ExteriorScene extends BaseWorldScene {
     this.composeGarden(blockers);
 
     this.setupPlayer(720, data?.fromHouse ? 435 : 450, this.worldWidth, this.worldHeight);
-    this.player.setDepth(this.player.y + WorldPresentation.depth.actorOffset);
     // Structural collision is split around the doorway, keeping the steps reachable.
     const houseLeft = house.x - house.displayWidth / 2;
     const houseRight = house.x + house.displayWidth / 2;
@@ -111,8 +111,7 @@ export class ExteriorScene extends BaseWorldScene {
 
   override update(): void {
     const nearDoor = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.door.x, this.door.y) < 52;
-    this.setContext(nearDoor ? 'ENTER' : '', nearDoor ? () => this.transition(SceneKeys.GroundFloor) : undefined);
+    this.setContext(nearDoor ? 'ENTER' : '', nearDoor ? this.enterHouse : undefined);
     super.update();
-    this.player.setDepth(this.player.y + WorldPresentation.depth.actorOffset);
   }
 }
