@@ -10,18 +10,26 @@ const requiredAssets = [
   ['assets-items/path/dirt-base.jpg', 'environment/path.jpg'],
   ['assets-items/house/rizal-house.png', 'buildings/rizal-house.png'],
   ['assets-items/house/interior-ground-floor.png', 'buildings/ground-floor.png'],
+  ['assets-items/house/interior-firstfloor(rizal-room).png', 'buildings/upper-floor.png'],
   ['assets-items/tree/large-mango-tree.png', 'environment/tree-large.png'],
   ['assets-items/tree/small-tropical-tree.png', 'environment/tree-small.png'],
   ['assets-items/bush/flowering-bush.png', 'environment/bush.png'],
   ['assets-items/flowers/white-flower.png', 'environment/flowers.png'],
   ['assets-items/fences/fence-a.png', 'environment/fence.png'],
+  ['assets-items/fences/fences-b.png', 'environment/fence-side.png'],
+  ['assets-items/fences/gate-open-a.png', 'environment/gate-left.png'],
+  ['assets-items/fences/gate-open-b.png', 'environment/gate-right.png'],
+  ['assets-items/grass/tallgrass.png', 'environment/tall-grass.png'],
+  ['assets-items/flowers/small-flower-cluster.png', 'environment/flower-cluster.png'],
+  ['assets-items/rocks/small-rock.png', 'environment/rock-small.png'],
+  ['assets-items/rocks/stone-patch.png', 'environment/stone-patch.png'],
   ['assets-items/interactive-objects/sign.png', 'props/sign.png'],
   ['assets-items/interactive-objects/writing-desk.png', 'props/writing-desk.png'],
   ['assets-items/interactive-objects/book.png', 'props/book.png'],
   ['assets-items/interactive-objects/chest.png', 'props/chest.png'],
 ];
 
-const directions = ['south', 'north', 'east', 'west'];
+const directions = ['south', 'south-east', 'east', 'north-east', 'north', 'north-west', 'west', 'south-west'];
 const joseSourceRoot = path.join('characters', "José's Rizal", 'Idle', 'animations');
 
 for (const direction of directions) {

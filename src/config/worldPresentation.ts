@@ -12,7 +12,13 @@ export const WorldPresentation = {
     bush: { scale: 0.18, footprint: { width: 34, height: 10 } },
     flowers: { scale: 0.075 },
     fence: { scale: 0.18, footprint: { width: 45, height: 10 } },
+    fenceSide: { scale: 0.16, footprint: { width: 24, height: 34 } },
+    gate: { scale: 0.15, footprint: { width: 25, height: 10 } },
     sign: { scale: 0.18, footprint: { width: 22, height: 10 } },
+    tallGrass: { scale: 0.14 },
+    flowerCluster: { scale: 0.1 },
+    rock: { scale: 0.1, footprint: { width: 22, height: 11 } },
+    stonePatch: { scale: 0.12 },
   },
   interior: {
     backgroundScale: 0.75,

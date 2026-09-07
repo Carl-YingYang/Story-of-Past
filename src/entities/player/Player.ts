@@ -26,8 +26,9 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
       if (!this.anims.currentAnim?.key.startsWith('jose-idle')) this.play(`jose-idle-${this.facing}`, true);
       return;
     }
-    if (Math.abs(vector.x) > Math.abs(vector.y)) this.facing = vector.x > 0 ? 'east' : 'west';
-    else this.facing = vector.y > 0 ? 'south' : 'north';
+    const horizontal = vector.x > 0.2 ? 'east' : vector.x < -0.2 ? 'west' : '';
+    const vertical = vector.y > 0.2 ? 'south' : vector.y < -0.2 ? 'north' : '';
+    this.facing = (vertical && horizontal ? `${vertical}-${horizontal}` : vertical || horizontal) as Direction;
     this.play(`jose-walk-${this.facing}`, true);
   }
 }

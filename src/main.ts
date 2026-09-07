@@ -6,6 +6,7 @@ import { TitleScene } from './scenes/TitleScene';
 import { ExteriorScene } from './scenes/ExteriorScene';
 import { GroundFloorScene } from './scenes/GroundFloorScene';
 import { HudScene } from './scenes/HudScene';
+import { UpperFloorScene } from './scenes/UpperFloorScene';
 
 new Phaser.Game({
   type: Phaser.AUTO, parent: 'game', width: GAME_WIDTH, height: GAME_HEIGHT, backgroundColor: '#151a12',
@@ -14,5 +15,5 @@ new Phaser.Game({
   scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH, width: GAME_WIDTH, height: GAME_HEIGHT },
   render: { antialias: false, pixelArt: true, roundPixels: true },
   input: { activePointers: 3 },
-  scene: [BootScene, TitleScene, ExteriorScene, GroundFloorScene, HudScene]
+  scene: [BootScene, TitleScene, ExteriorScene, GroundFloorScene, UpperFloorScene, HudScene]
 });

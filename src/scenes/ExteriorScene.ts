@@ -12,7 +12,7 @@ export class ExteriorScene extends BaseWorldScene {
 
   create(data?: { fromHouse?: boolean }): void {
     const p = WorldPresentation.exterior;
-    this.add.tileSprite(0, 0, this.worldWidth, this.worldHeight, 'grass').setOrigin(0).setTint(0x91a66c).setDepth(0);
+    this.add.tileSprite(0, 0, this.worldWidth, this.worldHeight, 'grass').setOrigin(0).setTileScale(.32).setTint(0x91a66c).setDepth(0);
     this.composePaths();
 
     const house = this.add.image(720, 390, 'house').setOrigin(.5, 1).setScale(p.house.scale).setDepth(390);
@@ -40,10 +40,10 @@ export class ExteriorScene extends BaseWorldScene {
 
   private composePaths(): void {
     const tint = 0xc8ad7b;
-    this.add.tileSprite(720, 620, 92, 470, 'path').setTint(tint).setDepth(1);
-    this.add.tileSprite(920, 600, 480, 88, 'path').setTint(tint).setDepth(1);
-    this.add.tileSprite(1120, 744, 92, 300, 'path').setTint(tint).setDepth(1);
-    this.add.tileSprite(485, 755, 560, 82, 'path').setTint(tint).setDepth(1);
+    this.add.tileSprite(720, 620, 92, 470, 'path').setTileScale(.3).setTint(tint).setDepth(1);
+    this.add.tileSprite(920, 600, 480, 88, 'path').setTileScale(.3).setTint(tint).setDepth(1);
+    this.add.tileSprite(1120, 744, 92, 300, 'path').setTileScale(.3).setTint(tint).setDepth(1);
+    this.add.tileSprite(485, 755, 560, 82, 'path').setTileScale(.3).setTint(tint).setDepth(1);
     for (const [x, y] of [[720,600],[1120,600],[720,755]] as const) this.add.ellipse(x, y, 112, 96, 0xb89b6d, .56).setDepth(1);
   }
 
@@ -64,10 +64,20 @@ export class ExteriorScene extends BaseWorldScene {
 
   private composeBoundary(blockers: Phaser.Physics.Arcade.StaticGroup): void {
     const p = WorldPresentation.exterior;
-    const segments = [330,380,430,480,530,580,860,910,960,1010,1060,1110];
+    const segments = [330,380,430,480,530,580,620,820,860,910,960,1010,1060,1110];
     for (const x of segments) {
       this.add.image(x, 505, 'fence').setOrigin(.5, 1).setScale(p.fence.scale).setDepth(505);
       this.addBlocker(blockers, x, 500, p.fence.footprint.width, p.fence.footprint.height);
+    }
+    for (const [x, key] of [[666, 'gateLeft'], [774, 'gateRight']] as const) {
+      this.add.image(x, 505, key).setOrigin(.5, 1).setScale(p.gate.scale).setDepth(505);
+      this.addBlocker(blockers, x, 500, p.gate.footprint.width, p.gate.footprint.height);
+    }
+    for (const x of [310, 1130]) {
+      for (const baseY of [350, 395, 440, 480]) {
+        this.add.image(x, baseY, 'fenceSide').setOrigin(.5, 1).setScale(p.fenceSide.scale).setDepth(baseY);
+        this.addBlocker(blockers, x, baseY - 17, p.fenceSide.footprint.width, p.fenceSide.footprint.height);
+      }
     }
     const sign = this.add.image(805, 495, 'sign').setOrigin(.5, 1).setScale(p.sign.scale).setDepth(495);
     this.addBlocker(blockers, sign.x, 490, p.sign.footprint.width, p.sign.footprint.height);
@@ -82,6 +92,16 @@ export class ExteriorScene extends BaseWorldScene {
     }
     const flowerClusters = [[430,430],[455,438],[1005,430],[1030,438],[565,565],[590,570],[965,680],[990,688],[310,715],[335,720]] as const;
     for (const [x, baseY] of flowerClusters) this.add.image(x, baseY, 'flowers').setOrigin(.5, 1).setScale(p.flowers.scale).setDepth(baseY);
+    for (const [x, baseY] of [[205,510],[245,525],[1190,575],[1240,590],[440,675],[1000,755]] as const)
+      this.add.image(x, baseY, 'tallGrass').setOrigin(.5, 1).setScale(p.tallGrass.scale).setDepth(baseY);
+    for (const [x, baseY] of [[400,455],[1070,458],[520,790],[890,720],[1190,720]] as const)
+      this.add.image(x, baseY, 'flowerCluster').setOrigin(.5, 1).setScale(p.flowerCluster.scale).setDepth(baseY);
+    for (const [x, baseY] of [[275,610],[1175,650],[360,775],[1060,860]] as const) {
+      this.add.image(x, baseY, 'rockSmall').setOrigin(.5, 1).setScale(p.rock.scale).setDepth(baseY);
+      this.addBlocker(blockers, x, baseY - 5, p.rock.footprint.width, p.rock.footprint.height);
+    }
+    for (const [x, y] of [[650,675],[790,690],[1080,560]] as const)
+      this.add.image(x, y, 'stonePatch').setScale(p.stonePatch.scale).setDepth(2).setAlpha(.72);
   }
 
   private addBlocker(group: Phaser.Physics.Arcade.StaticGroup, x: number, y: number, width: number, height: number): void {

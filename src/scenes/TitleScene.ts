@@ -5,7 +5,7 @@ export class TitleScene extends Phaser.Scene {
   constructor() { super(SceneKeys.Title); }
 
   create(): void {
-    this.add.tileSprite(0, 0, GAME_WIDTH, GAME_HEIGHT, 'grass').setOrigin(0).setTint(0x738453);
+    this.add.tileSprite(0, 0, GAME_WIDTH, GAME_HEIGHT, 'grass').setOrigin(0).setTileScale(.32).setTint(0x738453);
     this.add.rectangle(0, 0, GAME_WIDTH, GAME_HEIGHT, 0x0b0d0a, .48).setOrigin(0);
     for (let i = 0; i < 8; i++) this.add.image(60 + i * 132, 55 + (i % 2) * 390, i % 3 ? 'bush' : 'treeSmall').setScale(.38).setAlpha(.5);
     this.add.text(GAME_WIDTH / 2 + 3, 143, 'STORY OF', { fontFamily: 'Montserrat', fontSize: '20px', fontStyle: 'bold', color: '#1a1510', letterSpacing: 7 }).setOrigin(.5);

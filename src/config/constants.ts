@@ -2,7 +2,7 @@ export const GAME_WIDTH = 960;
 export const GAME_HEIGHT = 540;
 
 export const SceneKeys = {
-  Boot: 'Boot', Title: 'Title', Exterior: 'CalambaExterior', GroundFloor: 'GroundFloor', Hud: 'Hud'
+  Boot: 'Boot', Title: 'Title', Exterior: 'CalambaExterior', GroundFloor: 'GroundFloor', UpperFloor: 'UpperFloor', Hud: 'Hud'
 } as const;
 
 export const Events = {
